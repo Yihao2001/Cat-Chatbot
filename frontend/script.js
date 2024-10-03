@@ -31,9 +31,9 @@ function appendMessage(sender, message, className) {
 async function fetchResponse(message) {
     try {
         const response = await fetch('/chat', {
-            method: 'POST',
+            method: 'POST', // post request to send user message
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json', // specify type to expect
             },
             body: JSON.stringify({ message }),
         });

@@ -11,7 +11,7 @@ cat_api = CatAPI()
 
 @app.route('/')
 def serve_frontend():
-    return send_from_directory(app.static_folder, 'index.html')
+    return send_from_directory(app.static_folder, 'index.html') # default home page
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -21,8 +21,8 @@ def chat():
 
 @app.route('/get_cat', methods=['GET'])
 def get_cat():
-    breed = request.args.get('breed', default=None)
-    limit = request.args.get('limit', default=1, type=int)
+    breed = request.args.get('breed', default=None) # extracts breed from parameters
+    limit = request.args.get('limit', default=1, type=int) # extracts limit from parameters
     cats = cat_api.get_cats(breed, limit)
     return jsonify({'cats': cats})
 
